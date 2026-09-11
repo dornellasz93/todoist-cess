@@ -1,0 +1,16 @@
+{
+  "name": "desafio-fullstack-cess-uff",
+  "version": "1.0.0",
+  "description": "Plataforma de Gerenciamento de Tarefas (Desafio Fullstack) - Node.js + React + SQLite",
+  "scripts": {
+    "dev:backend": "npm --prefix backend run dev",
+    "dev:frontend": "npm --prefix frontend run dev",
+    "start:backend": "npm --prefix backend run start",
+    "build:frontend": "npm --prefix frontend run build",
+    "install:all": "npm --prefix backend install && npm --prefix frontend install && npm --prefix backend run db:push",
+    "test:api": "node test-api.js"
+  },
+  "keywords": ["fullstack", "react", "nodejs", "prisma", "sqlite", "jwt"],
+  "author": "",
+  "license": "MIT"
+}

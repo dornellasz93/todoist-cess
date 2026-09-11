@@ -1,0 +1,34 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model Usuario {
+  id           String    @id @default(uuid())
+  nome         String
+  email        String    @unique
+  senha        String
+  criadoEm     DateTime  @default(now())
+  atualizadoEm DateTime  @updatedAt
+  tarefas      Tarefa[]
+
+  @@map("usuarios")
+}
+
+model Tarefa {
+  id           String    @id @default(uuid())
+  titulo       String
+  descricao    String?
+  status       String    @default("pendente")
+  usuarioId    String
+  usuario      Usuario   @relation(fields: [usuarioId], references: [id], onDelete: Cascade)
+  criadoEm     DateTime  @default(now())
+  atualizadoEm DateTime  @updatedAt
+
+  @@index([usuarioId])
+  @@map("tarefas")
+}
